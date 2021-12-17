@@ -39,12 +39,6 @@ def aes_decrypt_file(cipherfile_path,extractfile_path,password):
     extract = ecies.aes_decrypt(key=bytekey,cipher_text=cipher)
 
 
-
-aes_encrypt_file(plaintext_path,ciphertext_path,password)
-    print('Success:',plaintext_path, 'AES encryption complete')
-    print('Written to:', ciphertext_path)
-
-
 try:
     aes_decrypt_file(ciphertext_path,plaintext_path,password)
     print('Success:',plaintext_path, 'decryption complete' )
