@@ -37,11 +37,11 @@ def aes_decrypt_file(cipherfile_path,extractfile_path,password):
     cipher = open(cipherfile_path,'rb').read()
     bytekey = hashlib.sha256( password.encode() ).digest()
     extract = ecies.aes_decrypt(key=bytekey,cipher_text=cipher)
-
+    open(extractfile_path,'wb').write(extract)
 
 try:
     aes_decrypt_file(ciphertext_path,plaintext_path,password)
-    print('Success:',plaintext_path, 'decryption complete' )
-    print('Written to:', ciphertext_path)
+    print('Success:',ciphertext_path, 'decryption complete' )
+    print('Written to:', plaintext_path)
 except Exception as E:
     print('Decryption failed',E)
