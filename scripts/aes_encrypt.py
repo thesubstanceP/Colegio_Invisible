@@ -47,7 +47,7 @@ def aes_encrypt_file(plainfile_path,cipherfile_path,password):
 
 
 
-aes_encrypt_file(plaintext_path,ciphertext_path,password)
+aes_encrypt_file(plaintext_path,ciphertext_path,password):
     print('Success:',plaintext_path, 'AES encryption complete')
     print('Written to:', ciphertext_path)
 
