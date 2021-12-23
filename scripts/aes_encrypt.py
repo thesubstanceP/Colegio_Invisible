@@ -1,4 +1,18 @@
 ##################################################################################
+# este guión cifrará un archivo con AES para crear un archivo protegido con una password
+# the AES key is the SHA256 hash of the user provided password
+#
+# iniciar en el terminal usando el siguiente
+# > python aes_encrypt.py <PASSWORD> <PLAINTEXT_PATH> <CIPHERTEXT_PATH>
+# <PASSWORD>: password usado para generar la clave AES
+# <PLAINTEXT_PATH>: el camino para llegar al archivo que va a estar cifrado
+# <CIPHERTEXT_PATH>: el camino para llegar al archivo cifrado recién generado 
+#EJEMPLO:
+#>python aes_encrypt.py Password123 file2enc.jpg cipher.aes
+#
+# Si <PASSWORD> NO ESTA INCLUIDO EL USUARIO ESTARA APROBADO A INTRODUCIRLO DE UNA MANERA SEGURA 
+##################################################################################
+##################################################################################
 # this script will encrypt a file using AES to create a password protected file
 # the AES key is the SHA256 hash of the user provided password
 #
@@ -26,17 +40,17 @@ if len(argv)==4:
 elif len(argv)==3:
     _, plaintext_path, ciphertext_path  = argv
     while True:
-        password = getpass.getpass("Input password for encryption: ")
-        password_2 = getpass.getpass("Repeat password for encryption: ")
+        password = getpass.getpass("Input password for encryption: ""Introducir password para cifrar")
+        password_2 = getpass.getpass("Repeat password for encryption: ""Repetir password para cifrar")
         if password==password_2:
-            print('\nPasswords match...')
+            print('\nPasswords match...''\nPasswords son iguales...')
             break
         else:
-            print('\nPasswords do not match...')
+            print('\nPasswords do not match...''\nPasswords no son iguales')
 else:
-    print('Incorrect number of arguments. 2 or 3 expected')
+    print('Incorrect number of arguments. 2 or 3 expected''Numero de argumentos incorrecto. 2 o 3 esperado')
     print('> python aes_encrypt.py <PASSWORD> <PLAINTEXT_PATH> <CIPHERTEXT_PATH>')
-    print('IF <PASSWORD> IS NOT INCLUDED USER WILL BE PROMPTED TO ENTER IT SECURELY')
+    print('IF <PASSWORD> IS NOT INCLUDED USER WILL BE PROMPTED TO ENTER IT SECURELY''SI <PASSWORD> NO ESTA INCLUIDO EL USUARIO ESTARA APROBADO A INTRODUCIRLO DE UNA MANERA SEGURA")
     exit()
 
 def aes_encrypt_file(plainfile_path,cipherfile_path,password):
@@ -48,6 +62,6 @@ def aes_encrypt_file(plainfile_path,cipherfile_path,password):
 
 
 aes_encrypt_file(plaintext_path,ciphertext_path,password)
-print('Success:',plaintext_path, 'AES encryption complete')
-print('Written to:', ciphertext_path)
+print('Success:''Exito:',plaintext_path, 'AES encryption complete''Cifrado AES con exito")
+print('Written to:''Escrito a:', ciphertext_path)
 
